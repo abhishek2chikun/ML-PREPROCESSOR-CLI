@@ -1,6 +1,10 @@
 import sys
 import pandas as pd
-
+import categorical
+import data_description
+import download
+import feature_scaling
+import imputation
 
 class main:
 
@@ -33,9 +37,26 @@ class main:
         return df
 
     def choose(self,df):
-        pass
-
-
+        print("\033[1m","What you want to do ??? (Preprocessing)","\033[0m\n")
+        x=int(input("""
+                1. Data Description\n
+                2. Handling NULL values\n
+                3. Encoding Categorical Data\n
+                4. Feature Scaling of the Dataset\n
+                5. Download the modification Dataset\n"""))
+        if x==1:
+            data_description.data_description(df)
+        elif x==2:
+            imputation.imputation(df)
+        elif x==3:
+            categorical.categorical(df)
+        elif x==4:
+            feature_scaling.feature_scaling(df)
+        elif x==5:
+            download.download(df)
+        else:
+            print("Wrong Choice")
+        
 
 m=main()
 df=m.remove_target()
