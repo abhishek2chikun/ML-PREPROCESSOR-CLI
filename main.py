@@ -37,13 +37,14 @@ class main:
         return df
 
     def choose(self,df):
-        print("\033[1m","What you want to do ??? (Preprocessing)","\033[0m\n")
+        print("\033[1m","\n\t\tWhat you want to do ??? (Preprocessing)","\033[0m\n")
         x=int(input("""
                 1. Data Description\n
                 2. Handling NULL values\n
                 3. Encoding Categorical Data\n
                 4. Feature Scaling of the Dataset\n
-                5. Download the modification Dataset\n"""))
+                5. Download the modification Dataset\n
+                Press -1 to exit\n"""))
         if x==1:
             data_description.data_description(df)
         elif x==2:
@@ -54,10 +55,13 @@ class main:
             feature_scaling.feature_scaling(df)
         elif x==5:
             download.download(df)
+        elif x==-1:
+            exit()
         else:
             print("Wrong Choice")
         
 
 m=main()
 df=m.remove_target()
-m.choose(df)
+for _ in range(100):
+    m.choose(df)
